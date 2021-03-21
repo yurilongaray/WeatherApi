@@ -1,11 +1,11 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 
 @Controller()
 export class AppController {
 
-  @Post('/login')
-  public login() {
+	@Get()
+	public getHealthStatus() {
 
-    return ({ token: 'tokenValue'});
-  }
+		return 'WeatherApiServer is Running';
+	}
 }
