@@ -1,5 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { UserCollection } from '../collections/user.collection';
+import { createUser } from './use-cases/create-user';
+import { UserDTO } from './user.dto';
+import { UserDTOPipe } from './user.pipe';
 import { UserRepository } from './user.repository';
 
 @Controller('user')
@@ -8,14 +10,8 @@ export class UserController {
     constructor(private readonly userRepositoryService: UserRepository) { }
 
     @Post('/register')
-    public register(@Body() payload: any) {
+    public register(@Body(UserDTOPipe) user: UserDTO) {
 
-        const user = new UserCollection();
-
-        user.name = payload.name;
-        user.email = payload.email;
-        user.password = payload.password;
-
-        return this.userRepositoryService.save(user);
+        return createUser(user, this.userRepositoryService);
     }
 }
