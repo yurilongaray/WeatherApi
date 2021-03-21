@@ -3,6 +3,8 @@ import { getConnectionManager } from 'typeorm';
 import { AppModule } from './src/app.module';
 import { MongoConnectionService } from './src/connections/mongo.connection';
 
+const PORT = process.env.PORT || 8000;
+
 async function bootstrap() {
 
   await new MongoConnectionService().connect();
@@ -13,7 +15,7 @@ async function bootstrap() {
 
   app.enableCors();
 
-  await app.listen(8000);
+  await app.listen(PORT);
 }
 
 bootstrap();
