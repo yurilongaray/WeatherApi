@@ -15,7 +15,7 @@ export class UserRepository {
         userToSave.email = user.email;
         userToSave.password = user.password;
 
-        return getManager(MONGO_CONNECTION).save(user);
+        return getManager(MONGO_CONNECTION).save(userToSave);
     }
 
     public findByEmail(email: string) {
