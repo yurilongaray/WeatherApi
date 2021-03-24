@@ -29,7 +29,7 @@ describe('getWeatherFromCity', () => {
 
         expect(httpService.get).toHaveBeenCalledWith('http://api.openweathermap.org/data/2.5/weather', {
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            params: { q: 'vancouver', appid: 'f7cd349684c50225d18c803421fcd564' }
+            params: { q: 'vancouver', appid: 'SOME-KEY' }
         });
     });
 
@@ -44,7 +44,7 @@ describe('getWeatherFromCity', () => {
 
         expect(httpService.get).toHaveBeenCalledWith('http://api.openweathermap.org/data/2.5/weather', {
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            params: { q: 'notacity', appid: 'f7cd349684c50225d18c803421fcd564' }
+            params: { q: 'notacity', appid: 'SOME-KEY' }
         });
     });
 
@@ -59,7 +59,7 @@ describe('getWeatherFromCity', () => {
 
         expect(httpService.get).toHaveBeenCalledWith('http://api.openweathermap.org/data/2.5/weather', {
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            params: { q: 'notacity', appid: 'f7cd349684c50225d18c803421fcd564' }
+            params: { q: 'notacity', appid: 'SOME-KEY' }
         });
         expect(console.error).toHaveBeenCalledWith({ cod: '404', message: 'city not found' });
     });

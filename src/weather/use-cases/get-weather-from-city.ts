@@ -1,11 +1,12 @@
 import { HttpService, NotFoundException } from "@nestjs/common";
 
-const URL = process.env.WEATHER_API_KEY || 'http://api.openweathermap.org/data/2.5/weather';
+const URL = 'http://api.openweathermap.org/data/2.5/weather';
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY || 'SOME-KEY';
 
 export async function getWeatherFromCity(city: string, httpService: HttpService) {
 
     const headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
-    const params = { q: city.toLowerCase(), appid: 'f7cd349684c50225d18c803421fcd564' };
+    const params = { q: city.toLowerCase(), appid: WEATHER_API_KEY };
     const config = { headers, params };
 
     const response = await httpService.get(URL, config).toPromise().catch(error => {
